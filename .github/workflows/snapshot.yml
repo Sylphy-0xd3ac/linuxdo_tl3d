@@ -1,0 +1,46 @@
+name: TL3 Daily Snapshot
+
+on:
+  schedule:
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+    inputs:
+      date_override:
+        description: "指定日期 YYYY-MM-DD（留空用今天）"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch TL3 data → snapshots/<date>.json
+        id: fetch
+        env:
+          FETCH_DATE: ${{ steps.fetch.outputs.date }}
+          SESSION_TOKEN: ${{ secrets.LINUXDO_SESSION_TOKEN }}
+        run: python3 fetch.py
+
+      - name: Write GitHub Actions Summary
+        env:
+          SNAPSHOT_DATE: ${{ steps.fetch.outputs.date }}
+        run: python3 logger.py
+
+      - name: Render HTML → snapshots/<date>.html + index.html
+        env:
+          SNAPSHOT_DATE: ${{ steps.fetch.outputs.date != '' && steps.fetch.outputs.date || github.event.inputs.date_override }}
+        run: python3 render.py
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add snapshots/ index.html
+          git diff --cached --quiet && echo "Nothing to commit" || \
+            (git commit -m "snapshot: $(date -u +%Y-%m-%d)" && git push)
