@@ -23,7 +23,7 @@ jobs:
       - name: Fetch TL3 data → snapshots/<date>.json
         id: fetch
         env:
-          FETCH_DATE: ${{ steps.fetch.outputs.date }}
+          FETCH_DATE: ${{ github.event.inputs.date_override }}
           SESSION_TOKEN: ${{ secrets.LINUXDO_SESSION_TOKEN }}
         run: python3 fetch.py
 
