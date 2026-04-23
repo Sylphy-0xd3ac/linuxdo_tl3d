@@ -30,12 +30,15 @@ def fetch(offset):
     return json.loads("\n".join(body_lines))
 
 
+from datetime import timedelta
+
 date_override = os.environ.get("FETCH_DATE", "")
 if date_override:
     from datetime import date as _date
     today = datetime.combine(_date.fromisoformat(date_override), datetime.min.time()).replace(tzinfo=timezone.utc)
 else:
     today = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+tomorrow = today + timedelta(days=1)
 date_str = str(today.date())
 new_users, offset = [], 0
 
@@ -50,13 +53,13 @@ while True:
     stop = False
     for b in badges:
         granted_at = datetime.fromisoformat(b["granted_at"].replace("Z", "+00:00"))
-        if granted_at >= today:
+        if today <= granted_at < tomorrow:
             new_users.append({
                 "username": user_map.get(b["user_id"], f"uid:{b['user_id']}"),
                 "granted_at": b["granted_at"],
                 "user_id": b["user_id"],
             })
-        else:
+        elif granted_at < today:
             stop = True
             break
     if stop:
