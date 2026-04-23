@@ -1,33 +1,22 @@
-import subprocess, json, os, sys
+import json, os, sys
 from datetime import datetime, timezone
 from pathlib import Path
+from curl_cffi import requests
 
-TOKEN = os.environ.get("SESSION_TOKEN", "")
-WORKER_URL = os.environ.get("WORKER_URL", "")
-
-if not TOKEN:
-    print("error: SESSION_TOKEN not set", file=sys.stderr)
-    sys.exit(1)
-if not WORKER_URL:
-    print("error: WORKER_URL not set", file=sys.stderr)
-    sys.exit(1)
-
+session = requests.Session(impersonate="chrome")
 
 def fetch(offset):
-    r = subprocess.run([
-        "curl", "-s", "-w", "\n%{http_code}",
-        f"{WORKER_URL}?offset={offset}",
-        "-H", "Accept: application/json",
-        "-H", f"Cookie: auth.session-token={TOKEN}",
-    ], capture_output=True, text=True)
-    *body_lines, status_code = r.stdout.strip().splitlines()
-    if status_code == "429":
+    r = session.get(
+        f"https://linux.do/user_badges.json?badge_id=3&offset={offset}",
+        headers={"Accept": "application/json"},
+    )
+    if r.status_code == 429:
         print("error: rate limited (429)", file=sys.stderr)
         sys.exit(1)
-    if status_code != "200":
-        print(f"error: upstream {status_code}", file=sys.stderr)
+    if r.status_code != 200:
+        print(f"error: upstream {r.status_code}", file=sys.stderr)
         sys.exit(1)
-    return json.loads("\n".join(body_lines))
+    return r.json()
 
 
 from datetime import timedelta

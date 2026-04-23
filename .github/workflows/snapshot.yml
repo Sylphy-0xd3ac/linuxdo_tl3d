@@ -20,12 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: pip install curl_cffi
+
       - name: Fetch TL3 data → snapshots/<date>.json
         id: fetch
         env:
           FETCH_DATE: ${{ github.event.inputs.date_override }}
-          SESSION_TOKEN: ${{ secrets.LINUXDO_SESSION_TOKEN }}
-          WORKER_URL: ${{ secrets.WORKER_URL }}
         run: python3 fetch.py
 
       - name: Write GitHub Actions Summary
