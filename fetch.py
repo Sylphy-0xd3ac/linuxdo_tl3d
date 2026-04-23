@@ -3,25 +3,29 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 TOKEN = os.environ.get("SESSION_TOKEN", "")
+WORKER_URL = os.environ.get("WORKER_URL", "")
+
 if not TOKEN:
-    print("ERROR: SESSION_TOKEN not set", file=sys.stderr)
+    print("error: SESSION_TOKEN not set", file=sys.stderr)
+    sys.exit(1)
+if not WORKER_URL:
+    print("error: WORKER_URL not set", file=sys.stderr)
     sys.exit(1)
 
 
 def fetch(offset):
     r = subprocess.run([
-        "curl", "-s", "--compressed", "-w", "\n%{http_code}",
-        f"https://linux.do/user_badges.json?badge_id=3&offset={offset}",
+        "curl", "-s", "-w", "\n%{http_code}",
+        f"{WORKER_URL}?offset={offset}",
         "-H", "Accept: application/json",
-        "-H", "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
         "-H", f"Cookie: auth.session-token={TOKEN}",
     ], capture_output=True, text=True)
     *body_lines, status_code = r.stdout.strip().splitlines()
     if status_code == "429":
-        print("error: rate limited (429), try again later", file=sys.stderr)
+        print("error: rate limited (429)", file=sys.stderr)
         sys.exit(1)
     if status_code != "200":
-        print(f"error: unexpected status {status_code}", file=sys.stderr)
+        print(f"error: upstream {status_code}", file=sys.stderr)
         sys.exit(1)
     return json.loads("\n".join(body_lines))
 
