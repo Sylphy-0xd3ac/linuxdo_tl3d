@@ -1,22 +1,22 @@
-import json, os, sys
+import subprocess, json, os, sys
 from datetime import datetime, timezone
 from pathlib import Path
-from curl_cffi import requests
-
-session = requests.Session(impersonate="chrome")
 
 def fetch(offset):
-    r = session.get(
+    r = subprocess.run([
+        "curl", "-s", "--compressed", "-w", "\n%{http_code}",
         f"https://linux.do/user_badges.json?badge_id=3&offset={offset}",
-        headers={"Accept": "application/json"},
-    )
-    if r.status_code == 429:
+        "-H", "Accept: application/json",
+        "-H", "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+    ], capture_output=True, text=True)
+    *body_lines, status_code = r.stdout.strip().splitlines()
+    if status_code == "429":
         print("error: rate limited (429)", file=sys.stderr)
         sys.exit(1)
-    if r.status_code != 200:
-        print(f"error: upstream {r.status_code}", file=sys.stderr)
+    if status_code != "200":
+        print(f"error: upstream {status_code}", file=sys.stderr)
         sys.exit(1)
-    return r.json()
+    return json.loads("\n".join(body_lines))
 
 
 from datetime import timedelta

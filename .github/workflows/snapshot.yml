@@ -20,9 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: pip install curl_cffi
-
       - name: Fetch TL3 data → snapshots/<date>.json
         id: fetch
         env:
