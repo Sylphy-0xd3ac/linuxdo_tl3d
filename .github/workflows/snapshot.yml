@@ -24,6 +24,7 @@ jobs:
         id: fetch
         env:
           FETCH_DATE: ${{ github.event.inputs.date_override }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
         run: python3 fetch.py
 
       - name: Write GitHub Actions Summary
