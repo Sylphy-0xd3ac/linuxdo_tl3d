@@ -1,0 +1,911 @@
+{
+  "date": "2026-04-28",
+  "count": 181,
+  "new_users": [
+    {
+      "username": "bedrock",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 327830
+    },
+    {
+      "username": "tha111111",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 327560
+    },
+    {
+      "username": "Clear_Kn",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 327461
+    },
+    {
+      "username": "Aem_404",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 327411
+    },
+    {
+      "username": "dontbesilent",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 327251
+    },
+    {
+      "username": "Yuanlairuci",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 327249
+    },
+    {
+      "username": "zj669",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 327209
+    },
+    {
+      "username": "shathway",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 327191
+    },
+    {
+      "username": "pallyoung",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 326968
+    },
+    {
+      "username": "can4hou6joeng4",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 326457
+    },
+    {
+      "username": "w651834294",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 326408
+    },
+    {
+      "username": "Brine",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 326137
+    },
+    {
+      "username": "shibo",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 326023
+    },
+    {
+      "username": "lolman",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 325914
+    },
+    {
+      "username": "omega001",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 325706
+    },
+    {
+      "username": "pearlescent",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 325658
+    },
+    {
+      "username": "mslljc",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 325385
+    },
+    {
+      "username": "LucasW",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 325265
+    },
+    {
+      "username": "zgo",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 325102
+    },
+    {
+      "username": "pingfan",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 324063
+    },
+    {
+      "username": "selina",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 323831
+    },
+    {
+      "username": "Sunuyoah",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 323661
+    },
+    {
+      "username": "Skmang",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 323335
+    },
+    {
+      "username": "wangxuezhang",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 322938
+    },
+    {
+      "username": "Immortality",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 322278
+    },
+    {
+      "username": "jasonta",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 321552
+    },
+    {
+      "username": "fanww",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 321380
+    },
+    {
+      "username": "cyber2077",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 321255
+    },
+    {
+      "username": "DaBanYu",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 320926
+    },
+    {
+      "username": "leeseven",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 320719
+    },
+    {
+      "username": "wenziji",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 316824
+    },
+    {
+      "username": "alaxlong",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 316416
+    },
+    {
+      "username": "zezeze",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 315809
+    },
+    {
+      "username": "Anc",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 315579
+    },
+    {
+      "username": "jiayu666",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 315227
+    },
+    {
+      "username": "Conrad",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 314150
+    },
+    {
+      "username": "m99",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 313737
+    },
+    {
+      "username": "COOKIES",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 311972
+    },
+    {
+      "username": "Raven01",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 309180
+    },
+    {
+      "username": "LL5612",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 308969
+    },
+    {
+      "username": "Humber",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 307365
+    },
+    {
+      "username": "ayakorin",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 307243
+    },
+    {
+      "username": "Alones",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 306197
+    },
+    {
+      "username": "wxm36930",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 305436
+    },
+    {
+      "username": "orange-guo",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 305230
+    },
+    {
+      "username": "rocosen",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 305189
+    },
+    {
+      "username": "1122345",
+      "granted_at": "2026-04-28T20:18:27.693Z",
+      "user_id": 304660
+    },
+    {
+      "username": "woMenhelyl",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 304340
+    },
+    {
+      "username": "ExpOuter",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 303597
+    },
+    {
+      "username": "Torch",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 303428
+    },
+    {
+      "username": "hyojoo",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 302336
+    },
+    {
+      "username": "today2026",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 302294
+    },
+    {
+      "username": "IKun9",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 301756
+    },
+    {
+      "username": "suuqilayyy",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 300050
+    },
+    {
+      "username": "sugrady",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 299612
+    },
+    {
+      "username": "zhl",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 299488
+    },
+    {
+      "username": "one-name",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 297480
+    },
+    {
+      "username": "sean0532",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 290224
+    },
+    {
+      "username": "suguojian",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 287515
+    },
+    {
+      "username": "sen_ge_iou",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 286521
+    },
+    {
+      "username": "Vesper36",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 284991
+    },
+    {
+      "username": "z2z2",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 270209
+    },
+    {
+      "username": "Vitity",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 267509
+    },
+    {
+      "username": "guanglilin",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 266725
+    },
+    {
+      "username": "xytom",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 257085
+    },
+    {
+      "username": "Chambo_Wu",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 253791
+    },
+    {
+      "username": "yuhuatong",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 251704
+    },
+    {
+      "username": "ltt_cn",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 246420
+    },
+    {
+      "username": "entertain_c",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 241174
+    },
+    {
+      "username": "ericwuh",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 236103
+    },
+    {
+      "username": "a15044408",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 226807
+    },
+    {
+      "username": "willingness",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 226179
+    },
+    {
+      "username": "rooky",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 224861
+    },
+    {
+      "username": "tingyuxuan",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 218326
+    },
+    {
+      "username": "qimaotaolun",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 217492
+    },
+    {
+      "username": "wuxiaoyuan",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 216623
+    },
+    {
+      "username": "chengmartial",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 214774
+    },
+    {
+      "username": "zerohh",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 208853
+    },
+    {
+      "username": "114c",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 208379
+    },
+    {
+      "username": "user2433",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 207586
+    },
+    {
+      "username": "Alex_Zhong",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 206837
+    },
+    {
+      "username": "owen1",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 206629
+    },
+    {
+      "username": "Kevin_K",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 204007
+    },
+    {
+      "username": "chain",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 202589
+    },
+    {
+      "username": "zds-s",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 202363
+    },
+    {
+      "username": "1kangsheng",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 187395
+    },
+    {
+      "username": "Ayekong",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 183509
+    },
+    {
+      "username": "kakakaka",
+      "granted_at": "2026-04-28T20:17:29.768Z",
+      "user_id": 181359
+    },
+    {
+      "username": "Jracle",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 177421
+    },
+    {
+      "username": "jiumozhi",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 177356
+    },
+    {
+      "username": "586246",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 175923
+    },
+    {
+      "username": "Eden_Ben",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 174312
+    },
+    {
+      "username": "LinuxDo08",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 174207
+    },
+    {
+      "username": "rush-it",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 173506
+    },
+    {
+      "username": "icybreaker",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 171790
+    },
+    {
+      "username": "xyz2",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 166291
+    },
+    {
+      "username": "love_ailixiya",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 164947
+    },
+    {
+      "username": "dwifbytslqh",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 163387
+    },
+    {
+      "username": "Mario_tang",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 158916
+    },
+    {
+      "username": "LinkSphere",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 156878
+    },
+    {
+      "username": "kaisun",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 155534
+    },
+    {
+      "username": "fan001",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 152691
+    },
+    {
+      "username": "mistForst",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 152450
+    },
+    {
+      "username": "giveohome",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 151142
+    },
+    {
+      "username": "jackie3",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 150666
+    },
+    {
+      "username": "chesten",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 149548
+    },
+    {
+      "username": "tanran",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 140461
+    },
+    {
+      "username": "yanyumm",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 140025
+    },
+    {
+      "username": "wilile",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 139519
+    },
+    {
+      "username": "aboutu",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 139409
+    },
+    {
+      "username": "changli",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 139377
+    },
+    {
+      "username": "element",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 139036
+    },
+    {
+      "username": "chgocn",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 137840
+    },
+    {
+      "username": "kevin_coding",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 133913
+    },
+    {
+      "username": "ss_Yue",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 132726
+    },
+    {
+      "username": "asd03077",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 105957
+    },
+    {
+      "username": "wu_doit",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 100268
+    },
+    {
+      "username": "kkkdw",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 100110
+    },
+    {
+      "username": "Shanque",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 97672
+    },
+    {
+      "username": "MIikey",
+      "granted_at": "2026-04-28T20:16:31.853Z",
+      "user_id": 95918
+    },
+    {
+      "username": "Feather578",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 94511
+    },
+    {
+      "username": "rzdby123",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 87847
+    },
+    {
+      "username": "xuanfeng",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 84485
+    },
+    {
+      "username": "morry_wang",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 84158
+    },
+    {
+      "username": "chenpingan-ny",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 79688
+    },
+    {
+      "username": "Axton",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 77633
+    },
+    {
+      "username": "cike567",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 68163
+    },
+    {
+      "username": "15737053136",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 66228
+    },
+    {
+      "username": "liujiangxu",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 66153
+    },
+    {
+      "username": "xingle",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 64988
+    },
+    {
+      "username": "Doss",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 63721
+    },
+    {
+      "username": "flymyd",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 63300
+    },
+    {
+      "username": "zenglaotou",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 60948
+    },
+    {
+      "username": "CitizenScyu",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 59422
+    },
+    {
+      "username": "a1073134503",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 59417
+    },
+    {
+      "username": "Baoxing",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 59401
+    },
+    {
+      "username": "Herden",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 54227
+    },
+    {
+      "username": "mayahs",
+      "granted_at": "2026-04-28T20:15:29.105Z",
+      "user_id": 54087
+    },
+    {
+      "username": "pijiu",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 52815
+    },
+    {
+      "username": "yiheng",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 50764
+    },
+    {
+      "username": "Sxuking",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 49078
+    },
+    {
+      "username": "czhyx1",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 47497
+    },
+    {
+      "username": "KafCoppelia",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 43642
+    },
+    {
+      "username": "unpack2l",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 41928
+    },
+    {
+      "username": "Tom_Black",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 40781
+    },
+    {
+      "username": "xylon",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 39811
+    },
+    {
+      "username": "teacher",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 37940
+    },
+    {
+      "username": "monstergan",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 37714
+    },
+    {
+      "username": "tianzhen",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 35787
+    },
+    {
+      "username": "jcjrobert",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 35076
+    },
+    {
+      "username": "creolophis",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 33765
+    },
+    {
+      "username": "serror",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 33247
+    },
+    {
+      "username": "zzhzzh",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 33205
+    },
+    {
+      "username": "xiguage",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 33192
+    },
+    {
+      "username": "stevessrbackup",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 32058
+    },
+    {
+      "username": "jacklee666",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 27975
+    },
+    {
+      "username": "Shifty5911",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 26658
+    },
+    {
+      "username": "shiquda",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 25646
+    },
+    {
+      "username": "zoowayss",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 22277
+    },
+    {
+      "username": "haowa",
+      "granted_at": "2026-04-28T20:14:27.265Z",
+      "user_id": 19747
+    },
+    {
+      "username": "ademicat",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 19395
+    },
+    {
+      "username": "knowlz",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 18918
+    },
+    {
+      "username": "777er",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 17806
+    },
+    {
+      "username": "SmileMachine",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 17684
+    },
+    {
+      "username": "Kriavn1",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 16776
+    },
+    {
+      "username": "NoobNoob",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 15439
+    },
+    {
+      "username": "LinuxC",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 14529
+    },
+    {
+      "username": "fyzfly",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 13752
+    },
+    {
+      "username": "lza12",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 12706
+    },
+    {
+      "username": "pzj",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 12179
+    },
+    {
+      "username": "Todd",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 8643
+    },
+    {
+      "username": "akahao",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 8350
+    },
+    {
+      "username": "Tsinghua8",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 7045
+    },
+    {
+      "username": "maiyouweng",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 6211
+    },
+    {
+      "username": "Mgrsc",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 6060
+    },
+    {
+      "username": "clown",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 5722
+    },
+    {
+      "username": "Cos0",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 4546
+    },
+    {
+      "username": "wd927",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 3244
+    },
+    {
+      "username": "nssiwi",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 1679
+    },
+    {
+      "username": "xzu",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 1650
+    },
+    {
+      "username": "liuqitoday",
+      "granted_at": "2026-04-28T20:13:28.246Z",
+      "user_id": 261
+    }
+  ]
+}
