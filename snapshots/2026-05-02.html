@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux DO TL3 · 2026-05-02</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #161923;
+      --surface2: #1e2231;
+      --border: #252b3b;
+      --accent: #818cf8;
+      --accent-dim: rgba(129,140,248,0.12);
+      --text: #dde1ec;
+      --muted: #7880a0;
+      --tl3: #fbbf24;
+      --tl3-dim: rgba(251,191,36,0.1);
+      --tl3-border: rgba(251,191,36,0.2);
+      --r: 10px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(15,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.75rem;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: -0.01em;
+    }
+
+    .logo-mark {
+      display: flex; align-items: center;
+    }
+
+    .header-right {
+      font-size: 0.75rem; color: var(--muted);
+    }
+
+    /* ── Layout ── */
+    .layout {
+      flex: 1;
+      display: flex;
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem 1.5rem;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    /* ── Sidebar ── */
+    aside {
+      width: 148px; flex-shrink: 0;
+      position: sticky; top: 68px;
+    }
+
+    .sidebar-label {
+      font-size: 0.68rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--muted); margin-bottom: 0.6rem;
+      padding-left: 0.5rem;
+    }
+
+    aside a {
+      display: block;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.8rem; color: var(--muted);
+      text-decoration: none; border-radius: 6px;
+      transition: color 0.12s, background 0.12s;
+    }
+
+    aside a:hover { color: var(--text); background: var(--surface2); }
+
+    aside a.active {
+      color: var(--accent);
+      background: var(--accent-dim);
+      font-weight: 500;
+    }
+
+    /* ── Main ── */
+    main { flex: 1; min-width: 0; }
+
+    .page-header { margin-bottom: 1.5rem; }
+
+    .page-title {
+      font-size: 1.6rem; font-weight: 600; letter-spacing: -0.03em;
+      display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+    }
+
+    .count-tag {
+      font-size: 0.8rem; font-weight: 500;
+      background: var(--tl3-dim); color: var(--tl3);
+      border: 1px solid var(--tl3-border);
+      padding: 0.2rem 0.65rem; border-radius: 20px;
+    }
+
+    .page-sub {
+      margin-top: 0.35rem;
+      font-size: 0.82rem; color: var(--muted);
+    }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .user-card {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      text-decoration: none; color: var(--text);
+      transition: border-color 0.15s, background 0.15s, transform 0.12s;
+    }
+
+    .user-card:hover {
+      border-color: var(--accent);
+      background: var(--surface2);
+      transform: translateY(-2px);
+    }
+
+    .user-info {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column; gap: 0.18rem;
+    }
+
+    .username {
+      font-size: 0.875rem; font-weight: 500;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .time { font-size: 0.72rem; color: var(--muted); }
+
+    .badge-pill {
+      font-size: 0.68rem; font-weight: 600;
+      background: var(--tl3-dim); color: var(--tl3);
+      border: 1px solid var(--tl3-border);
+      padding: 0.12rem 0.4rem; border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .empty {
+      color: var(--muted); font-size: 0.875rem; padding: 3rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 1.75rem;
+      text-align: center;
+      font-size: 0.72rem; color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      aside { display: none; }
+      .layout { padding: 1.25rem 1rem; gap: 0; }
+      .grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      .badge-pill { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark"><svg width="22" height="22" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><clipPath id="ld"><circle cx="60" cy="60" r="47"></circle></clipPath><circle fill="#f0f0f0" cx="60" cy="60" r="50"></circle><rect fill="#1c1c1e" clip-path="url(#ld)" x="10" y="10" width="100" height="30"></rect><rect fill="#f0f0f0" clip-path="url(#ld)" x="10" y="40" width="100" height="40"></rect><rect fill="#ffb003" clip-path="url(#ld)" x="10" y="80" width="100" height="30"></rect></svg></div>
+    Linux DO · TL3 Tracker
+  </div>
+  <span class="header-right">Trust Level 3 · 活跃用户</span>
+</header>
+
+<div class="layout">
+  <aside>
+    <div class="sidebar-label">History</div>
+      <a href="2026-05-02.html" class="active">2026-05-02</a>
+      <a href="2026-05-01.html">2026-05-01</a>
+      <a href="2026-04-30.html">2026-04-30</a>
+      <a href="2026-04-29.html">2026-04-29</a>
+      <a href="2026-04-28.html">2026-04-28</a>
+      <a href="2026-04-27.html">2026-04-27</a>
+      <a href="2026-04-26.html">2026-04-26</a>
+      <a href="2026-04-25.html">2026-04-25</a>
+      <a href="2026-04-24.html">2026-04-24</a>
+      <a href="2026-04-23.html">2026-04-23</a>
+      <a href="2026-04-22.html">2026-04-22</a>
+  </aside>
+
+  <main>
+    <div class="page-header">
+      <div class="page-title">
+        2026-05-02
+        <span class="count-tag">+89 人</span>
+      </div>
+      <div class="page-sub">当日新晋 Trust Level 3 活跃用户</div>
+    </div>
+
+    <div class="grid">
+        <a class="user-card" href="https://linux.do/u/NaSAeL" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@NaSAeL</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/y_bu_y" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@y_bu_y</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/SudoMe" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@SudoMe</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/koboling" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@koboling</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Qiuzhou" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Qiuzhou</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/mmparko" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@mmparko</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/flash2" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@flash2</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Lumexia" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Lumexia</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/mujinbaba" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@mujinbaba</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/ReyIceky" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@ReyIceky</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Bruce.Wayne" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Bruce.Wayne</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/sili" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@sili</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Infty" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Infty</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/taong" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@taong</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/OliverSmith" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@OliverSmith</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Timee" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Timee</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/yiyinfaith" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@yiyinfaith</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/MilQcxe" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@MilQcxe</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/chairman" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@chairman</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/dali7478" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@dali7478</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/q812143836" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@q812143836</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/mututu" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@mututu</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/bannerxu" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@bannerxu</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Spasmodic" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Spasmodic</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/BaimoQilin" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@BaimoQilin</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/edmounds" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@edmounds</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Rayama" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Rayama</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/seantang" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@seantang</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/ssfnxk" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@ssfnxk</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/haokun" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@haokun</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/qogirchen" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@qogirchen</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/feishuang" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@feishuang</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/TheFloodDragon" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@TheFloodDragon</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/shay.wong" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@shay.wong</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/GingerOrleansThighs" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@GingerOrleansThighs</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/KuriyamaMirai" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@KuriyamaMirai</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/nafase" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@nafase</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/timlong" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@timlong</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/panzer931" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@panzer931</span>
+            <span class="time">20:16 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/zig" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@zig</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Prince3" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Prince3</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/kxc" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@kxc</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/mmjsw" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@mmjsw</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/MarinaAlmaya" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@MarinaAlmaya</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Yulinanami" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Yulinanami</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/zhuifeng666" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@zhuifeng666</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/ericjee" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@ericjee</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/mayc" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@mayc</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/sgd29932111" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@sgd29932111</span>
+            <span class="time">20:15 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/eatanddie" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@eatanddie</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/fangyuansu1234" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@fangyuansu1234</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/winoneone" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@winoneone</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/QMQM" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@QMQM</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/user1294" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@user1294</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Tresta" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Tresta</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/underway" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@underway</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/lxwen" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@lxwen</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Chavez" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Chavez</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/MakotoArai" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@MakotoArai</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/LanyangyangKing" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@LanyangyangKing</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/wenshushili" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@wenshushili</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/mikerale" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@mikerale</span>
+            <span class="time">20:14 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/smith2" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@smith2</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/debugbin" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@debugbin</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/WyInnovate" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@WyInnovate</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Martain" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Martain</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/dark1222" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@dark1222</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/DilNazar" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@DilNazar</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/saber421123" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@saber421123</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/sy_ait" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@sy_ait</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Caun" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Caun</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/freefox" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@freefox</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/laosan" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@laosan</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/glanchan" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@glanchan</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/xzcokw" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@xzcokw</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/loukas" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@loukas</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/sugoi996" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@sugoi996</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/silkwa" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@silkwa</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Squatter" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Squatter</span>
+            <span class="time">20:13 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/hanf" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@hanf</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/hakunamatata" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@hakunamatata</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Kyrie" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Kyrie</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/9527_koala" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@9527_koala</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/CaiMr" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@CaiMr</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/taozi" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@taozi</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Qin_Sakura" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Qin_Sakura</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/Guducat" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@Guducat</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/favoste" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@favoste</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+        <a class="user-card" href="https://linux.do/u/sos" target="_blank" rel="noopener">
+          <div class="user-info">
+            <span class="username">@sos</span>
+            <span class="time">20:12 UTC</span>
+          </div>
+          <span class="badge-pill">TL3</span>
+        </a>
+    </div>
+  </main>
+</div>
+
+<footer>
+  数据来自 <a href="https://linux.do" target="_blank">linux.do</a> · badge_id=3 授予事件 · 每日 UTC 21:30 更新
+</footer>
+
+</body>
+</html>
